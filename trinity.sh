@@ -15,11 +15,9 @@ export TRINITY_MAX_CPU_PER_PARTITION=2
 
 singularity exec -B /weka /weka/health_sciences/bms/biochemistry/dearden_lab/galta815/trinity/trinityrnaseq.v2.15.2.simg \
 	Trinity \
-	--seqType fq \
-	--max_memory 50G \
-	--samples_file /weka/health_sciences/bms/biochemistry/dearden_lab/galta815/trinity/RNASeq_samples.txt \
-	--output /weka/health_sciences/bms/biochemistry/dearden_lab/galta815/trinity/trinity_output \
-	--min_kmer_cov 2 \
-	--no_parallel_norm_stats \
-	--normalize_by_read_set \
-	--CPU 6
+	--genome_guided_bam /weka/health_sciences/bms/biochemistry/dearden_lab/galta815/rna-seq/star/trimgalore_mapped_reads_post_removal/all_samples_mapped_merged.bam \
+    --genome_guided_max_intron 10000 \
+    --max_memory 50G \
+    --output /weka/health_sciences/bms/biochemistry/dearden_lab/galta815/trinity/trinity_output_GG \
+    --min_kmer_cov 2 \
+    --CPU 6
